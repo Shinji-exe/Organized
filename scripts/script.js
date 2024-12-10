@@ -1,7 +1,7 @@
 const userId = document.getElementById("userId");
 const userDropdown = document.getElementById("userDropdown");
 const toDoDetailsDiv = document.getElementById("toDoDetailsDiv");
-const categorySelect = document.getElementById("categorySelect");
+
 
 async function user(params) {
   try {
@@ -96,24 +96,3 @@ function todoCards(todos) {
   });
 }
 
-async function filterTodo() {
-  toDoDetailsDiv.innerHTML = "";
-  let nameValue = Number(userDropdown.value);
-  if (nameValue) {
-    try {
-      const response = await fetch("http://localhost:8083/api/todos");
-      const data = await response.json();
-      let todoFilter = data.filter((todo) => todo.userid === nameValue);
-      console.log(todoFilter);
-      todoCards(todoFilter);
-    } catch (error) {
-      console.error("Failed to fetch todos:", error);
-    }
-  } else {
-    toDoDetailsDiv.innerHTML = "";
-  }
-}
-
-async function createTodo() {
-  let todoData = {};
-}
