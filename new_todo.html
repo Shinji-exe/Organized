@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./scripts/script.js"></script>
     <title>New To Do</title>
+   <link rel="stylesheet" href="css/bootstrap.css">
+
   </head>
+
   <body>
     <h1>Add a New To Do</h1>
 
@@ -24,10 +27,17 @@
       </select>
 
       <label for="todoDescription">To Do Description</label>
-      <textarea id="todoDescription" name="todoDescription" rows="4" cols="50" placeholder="Enter the task description" required></textarea>
+      <textarea
+        id="todoDescription"
+        name="todoDescription"
+        rows="4"
+        cols="50"
+        placeholder="Enter the task description"
+        required
+      ></textarea>
 
       <label for="deadline">Deadline (YYYY-MM-DD):</label>
-      <input type="text" id="deadline" name="deadline" placeholder="YYYY-MM-DD" required>
+      <input type="text" id="deadline" name="deadline" placeholder="YYYY-MM-DD" required />
 
       <button type="submit" id="addTodoButton">Add To Do</button>
     </form>
