@@ -11,10 +11,10 @@
 
     <form id="newTodoForm">
       <label for="userId">Select User:</label>
-      <select name="userId" id="userId"></select>
+      <select name="userId" id="userId" onchange="fetchingCategories();"></select>
 
       <label for="category">Select Category</label>
-      <select name="category" id="category"></select>
+      <select name="category" id="categorySelect" onchange=""></select>
 
       <label for="priority">Select Priority:</label>
       <select id="priority" name="priority" required>
