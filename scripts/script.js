@@ -1,15 +1,19 @@
 const userId = document.getElementById("userId");
 const userDropdown = document.getElementById("userDropdown");
 const toDoDetailsDiv = document.getElementById("toDoDetailsDiv");
-const categorySelect = document.getElementById("categorySelect")
+
 
 async function user(params) {
-  let promise = fetch("http://localhost:8083/api/users");
-  let response = await promise;
-  let data = await response.json();
-  console.log(data);
-  populateUsers(data);
-  populateUsersDrop(data);
+  try {
+    let promise = fetch("http://localhost:8083/api/users");
+    let response = await promise;
+    let data = await response.json();
+    console.log(data);
+    populateUsersDrop(data);
+    populateUsers(data);
+  } catch (error) {
+    console.error("error code:", error);
+  }
 }
 
 user();
@@ -68,10 +72,11 @@ function populateCategories(todo) {
 }
 
 function todoCards(todos) {
+  toDoDetailsDiv.innerHTML = "";
   todos.forEach((todo) => {
-    const cardContainers = document.createElement("div");
-    cardContainers.className = "card bodyOfCard";
-    cardContainers.style.width = "18rem";
+    const cardContainer = document.createElement("div");
+    cardContainer.className = "card bodyOfCard";
+    cardContainer.style.width = "18rem";
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
@@ -80,45 +85,14 @@ function todoCards(todos) {
     cardTitle.className = "card-title";
     cardTitle.textContent = todo.category;
 
-    const cardLine = document.createElement("hr");
-
-    // const cardSubtitle = document.createElement("h6");
-    // cardSubtitle.className = "card-subtitle mb-2 text-body-secondary";
-    // cardSubtitle.innerText = `$${productCost.toFixed(2)}`;
-
     const cardText = document.createElement("p");
     cardText.className = "card-text";
+    cardText.textContent = `Description: ${todo.description}`; // Example property
 
-    // if (productUnits === 0) {
-    //   // const cardText = document.createElement("p");
-    //   // cardText.className = "card-text";
-    //   cardText.textContent = "Out of Stock!";
-    // } else {
-    //   // const cardText = document.createElement("p");
-    //   // cardText.className = "card-text";
-    //   cardText.textContent = `Avaliable units: ${productUnits}`;
-    // }
-
-    // const cardText2 = document.createElement("p");
-    // cardText2.className = "card-text";
-    // cardText2.textContent = `Supplier: ${productSupplier}`;
-
-    // const cardLink = document.createElement("a");
-    // cardLink.href = `productsDetails.html?productId=${productId}`;
-    // cardLink.innerText = "See More";
-
-    // cardBody.appendChild(cardTitle);
-    // cardBody.appendChild(cardLine);
-    // cardBody.appendChild(cardSubtitle);
-    // cardBody.appendChild(cardText);
-    // cardBody.appendChild(cardText2);
-    // cardBody.appendChild(cardLink);
-    cardContainers.appendChild(cardBody);
-
-    toDoDetailsDiv.appendChild(cardContainers);
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText);
+    cardContainer.appendChild(cardBody);
+    toDoDetailsDiv.appendChild(cardContainer);
   });
 }
 
-async function createTodo() {
-    
-}
