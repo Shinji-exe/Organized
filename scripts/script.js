@@ -1,6 +1,7 @@
 const userId = document.getElementById("userId");
 const userDropdown = document.getElementById("userDropdown");
 const toDoDetailsDiv = document.getElementById("toDoDetailsDiv");
+const categorySelect = document.getElementById("categorySelect")
 
 async function user(params) {
   let promise = fetch("http://localhost:8083/api/users");
@@ -14,7 +15,7 @@ async function user(params) {
 user();
 
 async function fetchingCategories() {
-  //   let user = userId.value;
+  let user = userId.value;
 
   let promise = fetch("http://localhost:8083/api/categories");
   let response = await promise;
@@ -23,7 +24,7 @@ async function fetchingCategories() {
   populateCategories(data);
 }
 
-fetchingCategories();
+// fetchingCategories();
 
 async function fetchingTodos() {
   try {
@@ -116,4 +117,8 @@ function todoCards(todos) {
 
     toDoDetailsDiv.appendChild(cardContainers);
   });
+}
+
+async function createTodo() {
+    
 }
