@@ -1,0 +1,223 @@
+/* #showCase .card{
+    margin: 10px;
+} */
+
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body{
+  width: 100%;
+overflow-x: hidden;
+}
+
+.back1 {
+  filter: brightness(0.9);
+  object-fit: cover;
+  /* background-image: url("../images/4k-mountain-l3f04sogeaabr5h0.jpg");
+    width: 100%;
+    height: 100%; */
+}
+
+.bodyOfCard{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out .3s;
+}
+
+.bodyOfCard:hover, .bodyOfCard:focus{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.navigation {
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.changeOpacity {
+  background-color: white;
+}
+
+.theMain {
+  /* padding-top: 5rem; */
+  /* background-image: url("/homeImages/4k-mountain-l3f04sogeaabr5h0.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover; */
+   overflow: hidden;
+}
+
+.theMainMountain {
+  padding-top: 4rem;
+}
+
+.theMainStorePage {
+  padding-top: 5rem;
+  /* flex: 1; */
+}
+
+.theMainGallery {
+  padding-top: 5rem;
+}
+
+.spara {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 1s ease-in;
+}
+
+.spara--visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#section1 {
+  background-image: url("/homeImages/679658-1920x1080-desktop-full-hd-yosemite-national-park-background-photo.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.intoSection {
+}
+
+/* .card .imgSection{
+    transition: all .3s ease-in-out;
+}
+
+.card .imgSection:hover{
+transform: scale(1.1);
+
+} */
+
+#listButton {
+  display: none;
+}
+
+.close {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  #desktopNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -500px;
+    height: 100vh;
+    width: 200px;
+    background-color: white;
+    transition: 0.3s;
+  }
+
+  #desktopNav.mobileView {
+    right: 0px;
+  }
+
+  #listButton {
+    display: block;
+  }
+
+  .close {
+    display: block;
+  }
+
+  .cardDisplay {
+    margin-top: 5px;
+  }
+
+  #textPlacement {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Popup styling */
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#selectedImage {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Gallery image styling */
+.galleryImg {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.galleryImg:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.banner {
+}
+
+.park-banner {
+  width: 100%;
+  height: 25rem;
+  background-image: url("/parkandmountaingallery/a47f7b9be114eb5411b8ec660b10d914.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mountain-banner {
+  width: 100%;
+  height: 25rem;
+  background-image: url("/homeImages/4k-mountain-l3f04sogeaabr5h0.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.c-image {
+  height: 42rem;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
