@@ -7,6 +7,7 @@ const priority = document.getElementById("priority");
 const categorySelect = document.getElementById("categorySelect");
 const todoDescription = document.getElementById("todoDescription");
 const deadline = document.getElementById("deadline");
+const addTodoButton = document.getElementById("addTodoButton");
 
 async function user() {
   try {
@@ -57,7 +58,7 @@ function populateUsersDrop(name) {
 function populateCategories(todo) {
   for (let i = 0; i < todo.length; i++) {
     let newOptions = document.createElement("option");
-    newOptions.value = todo[i].id;
+    newOptions.value = todo[i].name;
     newOptions.innerText = todo[i].name;
     categorySelect.appendChild(newOptions);
   }
@@ -124,6 +125,7 @@ function todoCards(todos) {
       if (completedButton.checked) {
         cardTitle.style.textDecoration = "line-through";
         cardText.style.textDecoration = "line-through";
+        cardPriority.style.textDecoration = "line-through";
       } else {
         cardTitle.style.textDecoration = "none";
         cardText.style.textDecoration = "none";
@@ -148,12 +150,33 @@ function todoCards(todos) {
       }
     });
 
+    let buttonGrouping = document.createElement("div");
+    buttonGrouping.className = "mt-3";
+
+    let editTodo = document.createElement("button");
+    editTodo.className = "me-2";
+    editTodo.innerText = "Edit";
+    buttonGrouping.appendChild(editTodo);
+
+    editTodo.addEventListener("click", () => {
+      location.href = "edit_todo.html";
+    });
+
+    let deleteTodo = document.createElement("button");
+    deleteTodo.innerText = "Delete";
+    buttonGrouping.appendChild(deleteTodo);
+
+    deleteTodo.addEventListener("click", () => {
+      location.href = "delete_todo.html";
+    });
+
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardFooter);
     cardContainer.appendChild(cardBody);
     cardBody.appendChild(label);
     cardBody.appendChild(completedButton);
+    cardBody.appendChild(buttonGrouping);
 
     toDoDetailsDiv.appendChild(cardContainer);
   });
@@ -209,3 +232,7 @@ async function createTodo(event) {
     console.error("error");
   }
 }
+
+addTodoButton.addEventListener("click", () => {
+  location.href = "todo.html";
+});
