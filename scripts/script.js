@@ -187,7 +187,7 @@ async function createTodo(event) {
 
   let todoData = {
     userid: Number(userId.value),
-    category: categorySelect.value,
+    category: Number(categorySelect.value),
     deadline: deadline.value,
     description: todoDescription.value.trim(),
     priority: priority.value,
