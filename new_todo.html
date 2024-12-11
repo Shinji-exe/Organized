@@ -5,68 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./scripts/script.js"></script>
     <title>New To Do</title>
-   <link rel="stylesheet" href="css/bootstrap.css">
-
+    <link rel="stylesheet" href="css/bootstrap.css" />
   </head>
 
   <body>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-          <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="todo.html">To Do</a>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="todo.html">To Do</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="new_todo.html">New To Do</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="new_todo.html">New To Do</a>
-              </li>
-              </ul>
-            </div>
-      </nav>
+    <div class="container d-flex justify-content-center align-items-start vh-100 pt-5">
+      <div class="card p-4 shadow" style="width: 100%; max-width: 500px">
+        <h1 class="text-center mb-4">Add a New To Do</h1>
 
+        <form id="newTodoForm" onsubmit="createTodo(event)">
+          <div class="mb-3">
+            <label for="userId" class="form-label">Select User:</label>
+            <select name="userId" id="userSelectId" class="form-select" onchange="fetchingCategories();"></select>
+          </div>
 
+          <div class="mb-3">
+            <label for="category" class="form-label">Select Category</label>
+            <select name="category" id="categorySelect" class="form-select"></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="priority" class="form-label">Select Priority:</label>
+            <select id="priority" name="priority" class="form-select" required>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="todoDescription" class="form-label">To Do Description</label>
+            <textarea
+              id="todoDescription"
+              name="todoDescription"
+              rows="4"
+              class="form-control"
+              placeholder="Enter the task description"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="deadline" class="form-label">Deadline (YYYY-MM-DD):</label>
+            <input type="date" id="deadline" name="deadline" class="form-control" placeholder="YYYY-MM-DD" required />
+          </div>
+
+          <button type="submit" id="addTodoButton" class="btn btn-primary w-100">Add To Do</button>
+        </form>
+
+        <!-- <form id="newTodoForm" onsubmit="createTodo(event)">
+          <label for="userId">Select User:</label>
+          <select name="userId" id="userSelectId" onchange="fetchingCategories();">
+            <option value="">Select...</option>
+          </select>
     
-  <div class="container d-flex justify-content-center align-items-start vh-100 pt-5">
-    <div class="card p-4 shadow" style="width: 100%; max-width: 500px;">
-      <h1 class="text-center mb-4">Add a New To Do</h1>
-
-      <form id="newTodoForm">
-        <div class="mb-3">
-          <label for="userId" class="form-label">Select User:</label>
-          <select name="userId" id="userId" class="form-select" onchange="fetchingCategories();"></select>
-        </div>
-
-        <div class="mb-3">
-          <label for="category" class="form-label">Select Category</label>
-          <select name="category" id="categorySelect" class="form-select"></select>
-        </div>
-
-        <div class="mb-3">
-          <label for="priority" class="form-label">Select Priority:</label>
-          <select id="priority" name="priority" class="form-select" required>
+          <label for="category">Select Category</label>
+          <select name="category" id="categorySelect" onchange="">
+            
+          </select>
+    
+          <label for="priority">Select Priority:</label>
+          <select id="priority" name="priority" required>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="todoDescription" class="form-label">To Do Description</label>
-          <textarea id="todoDescription" name="todoDescription" rows="4" class="form-control" placeholder="Enter the task description" required></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label for="deadline" class="form-label">Deadline (YYYY-MM-DD):</label>
-          <input type="text" id="deadline" name="deadline" class="form-control" placeholder="YYYY-MM-DD" required />
-        </div>
-
-        <button type="submit" id="addTodoButton" class="btn btn-primary w-100">Add To Do</button>
-      </form>
+    
+          <label for="todoDescription">To Do Description</label>
+          <textarea
+            id="todoDescription"
+            name="todoDescription"
+            rows="4"
+            cols="50"
+            placeholder="Enter the task description"
+            required
+          ></textarea>
+    
+          <label for="deadline">Deadline (YYYY-MM-DD):</label>
+          <input type="date" id="deadline" name="deadline" placeholder="YYYY-MM-DD" required />
+    
+          <button type="submit" id="addTodoButton">Add To Do</button>
+        </form> -->
+      </div>
     </div>
-  </div>
   </body>
 </html>
