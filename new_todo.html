@@ -29,10 +29,17 @@
       <div class="card p-4 shadow" style="width: 100%; max-width: 500px">
         <h1 class="text-center mb-4">Add a New To Do</h1>
 
+<<<<<<< HEAD
         <form id="newTodoForm">
           <div class="mb-3">
             <label for="userId" class="form-label">Select User:</label>
             <select name="userId" id="userId" class="form-select" onchange="fetchingCategories();"></select>
+=======
+        <form id="newTodoForm" onsubmit="createTodo(event)">
+          <div class="mb-3">
+            <label for="userId" class="form-label">Select User:</label>
+            <select name="userId" id="userSelectId" class="form-select" onchange="fetchingCategories();"></select>
+>>>>>>> f523ebf98f1a576e25fa2bfcfb627df085a4b883
           </div>
 
           <div class="mb-3">
@@ -63,11 +70,50 @@
 
           <div class="mb-3">
             <label for="deadline" class="form-label">Deadline (YYYY-MM-DD):</label>
+<<<<<<< HEAD
             <input type="date" id="deadline" name="deadline" class="form-control"  required />
+=======
           </div>
 
           <button type="submit" id="addTodoButton" class="btn btn-primary w-100">Add To Do</button>
         </form>
+<<<<<<< HEAD
+=======
+
+        <!-- <form id="newTodoForm" onsubmit="createTodo(event)">
+          <label for="userId">Select User:</label>
+          <select name="userId" id="userSelectId" onchange="fetchingCategories();">
+            <option value="">Select...</option>
+          </select>
+    
+          <label for="category">Select Category</label>
+          <select name="category" id="categorySelect" onchange="">
+            
+          </select>
+    
+          <label for="priority">Select Priority:</label>
+          <select id="priority" name="priority" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+    
+          <label for="todoDescription">To Do Description</label>
+          <textarea
+            id="todoDescription"
+            name="todoDescription"
+            rows="4"
+            cols="50"
+            placeholder="Enter the task description"
+            required
+          ></textarea>
+    
+          <label for="deadline">Deadline (YYYY-MM-DD):</label>
+          <input type="date" id="deadline" name="deadline" placeholder="YYYY-MM-DD" required />
+    
+          <button type="submit" id="addTodoButton">Add To Do</button>
+        </form> -->
+>>>>>>> f523ebf98f1a576e25fa2bfcfb627df085a4b883
       </div>
     </div>
   </body>
