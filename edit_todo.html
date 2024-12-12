@@ -1,11 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/customs.css" />
+    <script defer src="./scripts/script.js"></script>
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="todo.html">To Do</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="new_todo.html">New To Do</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="newuser.html">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container d-flex justify-content-center align-items-start vh-100 pt-5">
+        <div class="card p-4 shadow" style="width: 100%; max-width: 500px">
+          <h1 class="text-center mb-4">Update Todo</h1>
+
+          <form id="newTodoForm" onsubmit="editTodo(event)">
+            <div class="mb-3">
+              <label for="userSelectId" class="form-label">Select User:</label>
+              <select
+                name="userSelectId"
+                id="userSelectId"
+                class="form-select"
+                onchange="fetchingCategories();"
+              ></select>
+            </div>
+
+            <div class="mb-3">
+              <label for="categorySelect" class="form-label">Select Category</label>
+              <select name="categorySelect" id="categorySelect" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+              <label for="priority" class="form-label">Select Priority:</label>
+              <select id="priority" name="priority" class="form-select" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="todoDescription" class="form-label">To Do Description</label>
+              <textarea
+                id="todoDescription"
+                name="todoDescription"
+                rows="4"
+                class="form-control"
+                placeholder="Enter the task description"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="deadline" class="form-label">Deadline (YYYY-MM-DD):</label>
+              <input type="date" id="deadline" name="deadline" class="form-control" required />
+            </div>
+
+            <button type="submit" id="addTodoButton" class="btn btn-primary w-100" onclick="showToast()">
+              Add To Do
+            </button>
+          </form>
+        </div>
+
+        <!-- <div class="toast">
+          <div class="toast-content">
+            <div class="message">
+              <span class="text text-1">success</span>
+              <span class="text text-2">Your Todo has been saved</span>
+            </div>
+          </div>
+          <div class="progress"></div>
+        </div> -->
+      </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>
