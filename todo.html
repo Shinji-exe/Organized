@@ -2,46 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-   <link rel="stylesheet" href="css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <script defer src="./scripts/script.js"></script>
     <title>Todos</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="todo.html">To Do</a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="new_todo.html">New To Do</a>
-          </li>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="todo.html">To Do</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="new_todo.html">New To Do</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="newuser.html">Sign Up</a>
+            </li>
           </ul>
         </div>
-  </nav>
+      </nav>
+    </header>
     <main class="d-flex flex-column align-items-center justify-content-center min-vh-100">
       <h2>To do List</h2>
       <label for="userDropdown" class="mt-3"> View List By User </label>
       <select id="userDropdown" class="mt-2" onchange="filterTodo()">
         <!-- <option value="">Select</option>  -->
-          </select>
-          <br>
-          <!-- <div id="toDoDetailsDiv" class="card"></div>  -->
-          <!-- <div class="card-body"></div>
+      </select>
+      <br />
+      <!-- <div id="toDoDetailsDiv" class="card"></div>  -->
+      <!-- <div class="card-body"></div>
           <div class="card-text"></div> -->
-          <div id="toDoDetailsDiv" class="mb-3" style="max-width: 20rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h4 class="card-title">Success card title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+      <div id="toDoDetailsDiv" class="mb-3" style="max-width: 20rem">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h4 class="card-title">Success card title</h4>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          </p>
+        </div>
+      </div>
     </main>
   </body>
 </html>

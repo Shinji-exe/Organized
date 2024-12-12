@@ -9,6 +9,8 @@ const todoDescription = document.getElementById("todoDescription");
 const deadline = document.getElementById("deadline");
 const addTodoButton = document.getElementById("addTodoButton");
 
+let toastbox = document.getElementById("toastBox");
+
 async function loadUsers() {
   try {
     let promise = fetch("http://localhost:8083/api/users");
@@ -96,7 +98,7 @@ function todoCards(todos) {
   toDoDetailsDiv.innerHTML = "";
   todos.forEach((todo) => {
     const cardContainer = document.createElement("div");
-    cardContainer.className = "card bodyOfCard";
+    cardContainer.className = "card bodyOfCard my-3";
     cardContainer.style.width = "18rem";
 
     const cardBody = document.createElement("div");
@@ -160,6 +162,15 @@ function todoCards(todos) {
     let buttonGrouping = document.createElement("div");
     buttonGrouping.className = "mt-3";
 
+    let viewTodo = document.createElement("button");
+    viewTodo.className = "me-2";
+    viewTodo.innerText = "View";
+    buttonGrouping.appendChild(viewTodo);
+
+    viewTodo.addEventListener("click", () => {
+      location.href = "edit_todo.html";
+    });
+
     let editTodo = document.createElement("button");
     editTodo.className = "me-2";
     editTodo.innerText = "Edit";
@@ -171,11 +182,22 @@ function todoCards(todos) {
 
     let deleteTodo = document.createElement("button");
     deleteTodo.innerText = "Delete";
+    deleteTodo.addEventListener("click", async () => {
+      let promise = fetch(`http://localhost:8083/api/todos/${todo.id}`, {
+        method: "DELETE",
+      });
+      let response = await promise;
+      if (response.ok || response.status == 200) {
+        console.log("Successful Deletion");
+      } else {
+        console.log("Something is wrong");
+      }
+    });
     buttonGrouping.appendChild(deleteTodo);
 
-    deleteTodo.addEventListener("click", () => {
-      location.href = "delete_todo.html";
-    });
+    // deleteTodo.addEventListener("click", () => {
+    //   location.href = `delete_todo.html`;
+    // });
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
@@ -240,6 +262,51 @@ async function createTodo(event) {
   }
 }
 
+async function editTodo(todo, e) {
+  e.preventDefault();
+
+  const priority = document.getElementById("priority");
+  const categorySelect = document.getElementById("categorySelect");
+  const todoDescription = document.getElementById("todoDescription");
+  const deadline = document.getElementById("deadline");
+
+  let updateData = {
+    userid: Number(userId.value),
+    category: categorySelect.value,
+    deadline: deadline.value,
+    description: todoDescription.value.trim(),
+    priority: priority.value,
+    // deadline: "",
+  };
+
+  try {
+    let promise = fetch(`http://localhost:8083/api/todos/${todo.id}`, {
+      method: "PUT",
+      body: JSON.stringify(updateData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let response = await promise;
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("error");
+  }
+}
+
+// async function deleteTodo(todo) {
+//   let promise = fetch(`http://localhost:8083/api/todos/${todo.id}`,{
+//     method: "DELETE"
+//   })
+//   let response = await promise;
+//   if(response.ok || response.status == 200){
+//     console.log("Successful Deletion")
+//   }else{
+//     console.log("Something is wrong")
+//   }
+// }
+
 // Example of adding an error display element:
 // In your HTML: <div id="error-message" style="color: red;"></div>
 
@@ -250,7 +317,7 @@ async function createUser(event) {
 
   let userData = {
     name: document.getElementById("fullNameField").value.trim(),
-    username: document.getElementById("emailField").value.trim(),
+    username: document.getElementById("usernameField").value.trim(),
     email: document.getElementById("emailField").value.trim(),
     password: document.getElementById("passwordField").value.trim(),
     imageProfile: document.getElementById("imageProfile").value,
@@ -280,12 +347,34 @@ async function createUser(event) {
     let response = await promise;
     let data = await response.json();
     console.log(data);
+    localStorage.setItem("user", JSON.stringify(data));
   } catch (error) {
     console.error("error");
   }
 }
 
-
+async function loginUser() {
+  let signInData = {
+    username: document.getElementById("usernameField").value.trim(),
+    password: document.getElementById("passwordField").value.trim(),
+  };
+  try {
+    let promise = fetch("http://localhost:8083/api/users", {
+      method: "POST",
+      // body: JSON.stringify(userData),
+      body: JSON.stringify(signInData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let response = await promise;
+    let data = await response.json();
+    console.log(data);
+    localStorage.getItem("user", JSON.parse(data));
+  } catch (error) {
+    console.error("Error code", error);
+  }
+}
 
 function togglePassword() {
   const passwordField = document.getElementById("passwordField");
@@ -301,3 +390,22 @@ function togglePassword() {
     passwordLabel.innerText = "Show Password";
   }
 }
+
+// addTodoButton.addEventListener("click", ()=>{
+//   location.href = "todo.html"
+// })
+
+// function showToast(message) {
+//   let toast = document.createElement("div");
+//   toast.classList.add('toast');
+//   toast.textContent = message;
+//   leftside.appendChild(toast);
+
+//   setTimeout(() => {
+//       toast.classList.add('show');
+//       setTimeout(() => {
+//           toast.classList.remove('show');
+//           leftside.removeChild(toast);
+//       }, 3000);
+//   }, 10);
+// }

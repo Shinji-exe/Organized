@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link " href="index.html">Home </a>
+              <a class="nav-link" href="index.html">Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="todo.html">To Do</a>
@@ -24,7 +24,10 @@
               <a class="nav-link" href="new_todo.html">New To Do</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="newuser.html">Sign Up</a>
+              <a class="nav-link" href="newuser.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="login.html">Sign In</a>
             </li>
           </ul>
         </div>
@@ -37,20 +40,10 @@
           <div class="text-center">
             <img src="./images/logoipsum-212.svg" class="mb-2" alt="" />
           </div>
-          <div class="form-group mb-3">
-            <h2 class="text-center">Create an Account</h2>
-            <label for="username">Full Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="fullNameField"
-              aria-describedby="fullname"
-              placeholder="Full Name"
-              required
-            />
-          </div>
+
           <div class="form-group mb-3">
             <!-- <h2 class="text-center">Create an Account</h2> -->
+            <h2 class="text-center">Sign In</h2>
             <label for="username">Username</label>
             <input
               type="text"
@@ -62,17 +55,6 @@
             />
           </div>
 
-          <div class="form-group mb-3">
-            <label for="Email Address">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="emailField"
-              aria-describedby="Email"
-              placeholder=" Email"
-              required
-            />
-          </div>
           <div class="form-group mb-3">
             <label for="Password1">Password</label>
             <input
@@ -115,37 +97,32 @@
             </div>
           </div> -->
 
-          <div>
-            <input class="" type="file" name="" id="imageProfile" />
-          </div>
-          <hr />
-
-          <button type="submit" id="signinButton" class="btn btn-success rounded-5 mt-2 w-100">Sign Up</button>
+          <button type="submit" id="signinButton" class="btn btn-success rounded-5 mt-2 w-100">Sign In</button>
           <hr class="" />
 
           <div class="d-flex justify-content-center buttonFlip gap-2">
             <div class="">
               <button type="submit" class="btn btn-primary rounded-5 w-100">
                 <i class="bi bi-google pe-1"></i>
-                Sign up with Google
+                Sign in with Google
               </button>
             </div>
 
             <div class="">
               <button type="submit" class="btn btn-secondary rounded-5 w-100">
                 <i class="bi bi-apple pe-1"></i>
-                Sign up with Apple ID
+                Sign in with Apple ID
               </button>
             </div>
           </div>
 
           <div class="my-2 text-center">
-            <small>Have an account with us? <a href="login.html">Sign In</a></small>
+            <small>Don't have an account with us? <a href="newuser.html">Sign Up</a></small>
           </div>
         </form>
       </div>
 
-      <div id="imagePlacement" class="w-100"></div>
+      <div id="imageSecondPlacement" class="w-100"></div>
     </div>
   </body>
 </html>
