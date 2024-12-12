@@ -9,7 +9,7 @@ const todoDescription = document.getElementById("todoDescription");
 const deadline = document.getElementById("deadline");
 const addTodoButton = document.getElementById("addTodoButton");
 
-async function user() {
+async function loadUsers() {
   try {
     let promise = fetch("http://localhost:8083/api/users");
     let response = await promise;
@@ -20,8 +20,6 @@ async function user() {
     console.error("error code:", error);
   }
 }
-
-user();
 
 async function userForCreatingPost(params) {
   try {
@@ -86,6 +84,14 @@ async function fetchingCategories() {
 // }
 // }
 
+async function initialize() {
+  await loadUsers();
+  //Set dropdown to user.queryString
+  filterTodo();
+}
+
+initialize();
+
 function todoCards(todos) {
   toDoDetailsDiv.innerHTML = "";
   todos.forEach((todo) => {
@@ -129,6 +135,7 @@ function todoCards(todos) {
       } else {
         cardTitle.style.textDecoration = "none";
         cardText.style.textDecoration = "none";
+        cardPriority.style.textDecoration = "none";
       }
       // cardTitle.style.textDecoration = "line-through"
       // cardText.style.textDecoration = "line-through"
@@ -233,6 +240,64 @@ async function createTodo(event) {
   }
 }
 
-addTodoButton.addEventListener("click", () => {
-  location.href = "todo.html";
-});
+// Example of adding an error display element:
+// In your HTML: <div id="error-message" style="color: red;"></div>
+
+async function createUser(event) {
+  event.preventDefault();
+
+  let formData = new FormData();
+
+  let userData = {
+    name: document.getElementById("fullNameField").value.trim(),
+    username: document.getElementById("emailField").value.trim(),
+    email: document.getElementById("emailField").value.trim(),
+    password: document.getElementById("passwordField").value.trim(),
+    imageProfile: document.getElementById("imageProfile").value,
+  };
+
+  // formData.append("name", document.getElementById("fullNameField").value.trim())
+  // formData.append("username", document.getElementById("usernameField").value.trim())
+  // formData.append("name", document.getElementById("emailField").value.trim())
+  // formData.append("name", document.getElementById("passwordField").value.trim())
+
+  // let imageProfile = document.getElementById("imageProfile").files[0]
+  // if(imageProfile){
+  //   formData.append("imageProfile", imageProfile)
+  // }else{
+  //   console.error("No File")
+  // }
+
+  try {
+    let promise = fetch("http://localhost:8083/api/users", {
+      method: "POST",
+      // body: JSON.stringify(userData),
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let response = await promise;
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("error");
+  }
+}
+
+
+
+function togglePassword() {
+  const passwordField = document.getElementById("passwordField");
+  const passwordField2 = document.getElementById("passwordField2");
+  const passwordLabel = document.getElementById("passwordLabel");
+  if (passwordField.type === "password" && passwordField2.type === "password") {
+    passwordField.type = "text";
+    passwordField2.type = "text";
+    passwordLabel.innerText = "Hide Password";
+  } else {
+    passwordField.type = "password";
+    passwordField2.type = "password";
+    passwordLabel.innerText = "Show Password";
+  }
+}
