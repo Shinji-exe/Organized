@@ -1,11 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/customs.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <script defer src="./scripts/script.js"></script>
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="container-fluid d-flex justify-content-between min-vh-100">
+      <div class="w-100 d-flex justify-content-center align-items-center border-5">
+        <form class="border border-primary-subtle p-4 rounded-5" id="forms" onsubmit="createUser(event)">
+          <div class="text-center">
+            <img src="./images/logoipsum-212.svg" class="mb-2" alt="" />
+          </div>
+          <div class="form-group mb-3">
+            <h2 class="text-center">Create an Account</h2>
+            <label for="username">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullNameField"
+              aria-describedby="fullname"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+          <div class="form-group mb-3">
+            <!-- <h2 class="text-center">Create an Account</h2> -->
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="usernameField"
+              aria-describedby="username"
+              placeholder="Username"
+              required
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="Email Address">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailField"
+              aria-describedby="Email"
+              placeholder=" Email"
+              required
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="Password1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordField"
+              placeholder="Password"
+              minlength="8"
+              maxlength="20"
+              required
+            />
+            <!-- <i class="bi bi-eye-slash align p-2 mt-2" id="hide-show" onclick="togglePassword()">Show Password</i> -->
+            <button class="btn" onclick="togglePassword()">
+              <i id="passwordLabel" class="bi bi-eye-slash align p-2 mt-2 hide-show1">Show Password</i>
+            </button>
+            <!-- <p id="passwordLabel" style="display: inline;">Show Password</p> -->
+            <small id="password1" class="text-muted"> Must be 8-20 characters long. </small>
+          </div>
+          <!-- <div class="form-group mb-3">
+            <label for="Password2">Re-enter Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordField2"
+              placeholder="Password"
+              minlength="8"
+              maxlength="20"
+              required
+            />
+            <button class="btn" onclick="togglePassword()">
+              <i id="passwordLabel" class="bi bi-eye-slash align p-2 mt-2 hide-show1">Show Password</i>
+              <p id="passwordLabel" style="display: inline;">Show Password</p>
+            </button>
+            <i class="bi bi-eye-slash align p-2 mt-2 hide-show1" onclick="togglePassword()">Show Password</i>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="password2" class="text-muted"> Must be 8-20 characters long. </small>
+
+            <div>
+              <input class="" type="file" name="" id="imageProfile" />
+            </div>
+          </div> -->
+
+          <div>
+            <input class="" type="file" name="" id="imageProfile" />
+          </div>
+          <hr />
+
+          <button type="submit" id="signinButton" class="btn btn-success rounded-5 mt-2 w-100">Sign Up</button>
+          <hr class="" />
+
+          <div class="d-flex justify-content-center buttonFlip gap-2">
+            <div class="">
+              <button type="submit" class="btn btn-primary rounded-5 w-100">
+                <i class="bi bi-google pe-1"></i>
+                Sign up with Google
+              </button>
+            </div>
+
+            <div class="">
+              <button type="submit" class="btn btn-secondary rounded-5 w-100">
+                <i class="bi bi-apple pe-1"></i>
+                Sign up with Apple ID
+              </button>
+            </div>
+          </div>
+
+          <div class="my-2 text-center">
+              <small>Have an account with us? <a href="signin.html">Sign In</a></small>
+            </div>
+        </form>
+      </div>
+
+      <div id="imagePlacement" class="w-100"></div>
+    </div>
+  </body>
 </html>
