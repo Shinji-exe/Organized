@@ -1,6 +1,17 @@
 body{
    box-sizing: border-box;
 }
+
+.darkmode{
+    --color-bg: #000000;
+    --color-text: #ffffff;
+    transition: all .2s ease-in-out;
+  }
+  
+  button#themeChanger {
+    transition: all .2s ease-in-out;
+  }
+
 .center {
     margin: auto; 
     margin-top: 60px;
@@ -45,4 +56,14 @@ body{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 20px 35px 20px 25px;
     z-index: 1000;
+}
+
+.bodyOfCard{
+box-shadow: 1px 4px 10px black;
+transition: all .2s ease-in-out;
+}
+
+.bodyOfCard:hover{
+    box-shadow: 1px 4px 10px aqua;
+    transform: scale(1.05);
 }

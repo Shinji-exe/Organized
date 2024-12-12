@@ -167,8 +167,16 @@ function todoCards(todos) {
     viewTodo.innerText = "View";
     buttonGrouping.appendChild(viewTodo);
 
-    viewTodo.addEventListener("click", () => {
-      location.href = "edit_todo.html";
+    viewTodo.addEventListener("click", async () => {
+      try {
+        let promise = fetch(`http://localhost:8083/api/todos/${todo.id}`);
+        let response = await promise;
+        let data = await response.json();
+        console.log(data);
+        location.href = `edit_todo.html?id=${todo.id}`;
+      } catch (error) {
+        console.error("error", error);
+      }
     });
 
     let editTodo = document.createElement("button");
@@ -177,7 +185,7 @@ function todoCards(todos) {
     buttonGrouping.appendChild(editTodo);
 
     editTodo.addEventListener("click", () => {
-      location.href = "edit_todo.html";
+      location.href = `edit_todo.html?id=${todo.id}`;
     });
 
     let deleteTodo = document.createElement("button");
@@ -262,8 +270,8 @@ async function createTodo(event) {
   }
 }
 
-async function editTodo(todo, e) {
-  e.preventDefault();
+async function editTodo(todo, event) {
+  event.preventDefault();
 
   const priority = document.getElementById("priority");
   const categorySelect = document.getElementById("categorySelect");
@@ -292,6 +300,7 @@ async function editTodo(todo, e) {
     console.log(data);
   } catch (error) {
     console.error("error");
+    alert(error)
   }
 }
 
@@ -391,9 +400,9 @@ function togglePassword() {
   }
 }
 
-// addTodoButton.addEventListener("click", ()=>{
-//   location.href = "todo.html"
-// })
+addTodoButton.addEventListener("click", ()=>{
+  location.href = "todo.html"
+})
 
 // function showToast(message) {
 //   let toast = document.createElement("div");
@@ -409,3 +418,34 @@ function togglePassword() {
 //       }, 3000);
 //   }, 10);
 // }
+
+let darkmode = localStorage.getItem("darkmode");
+let themeChanger = document.getElementById("themeChanger");
+let themeIcon = document.getElementById("themeIcon").querySelector("use");
+
+function enableDarkmode() {
+  document.body.classList.add("darkmode");
+  localStorage.setItem("darkmode", "active");
+  themeChanger.innerText = "Light";
+  themeIcon.setAttribute("href", "#moon"); // Set the href to the moon icon for dark mode
+}
+
+function disableDarkmode() {
+  document.body.classList.remove("darkmode");
+  localStorage.setItem("darkmode", null);
+  themeChanger.innerText = "Dark";
+  themeIcon.setAttribute("href", "#circle-half"); // Set the href to the sun icon for light mode
+}
+
+if (darkmode === "active") enableDarkmode();
+
+themeChanger.addEventListener("click", () => {
+  darkmode = localStorage.getItem("darkmode");
+  if (darkmode !== "active") {
+    enableDarkmode();
+  } else {
+    disableDarkmode();
+  }
+});
+
+console.log(themeChanger)
